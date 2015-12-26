@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="libs/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="libs/spark.min.js"></script>
+    <script src="libs/jquery.min.js"></script>
+    <script src="libs/jquery.mobile-1.4.5.min.js"></script>
+    <title>Particle login on jQuery</title>
+</head>
+
+<body>
+    <!--- *************** MAIN PAGE *************** --->
+    <div data-role="page" id="home" data-theme="a" data-content-theme="a">
+        <div data-role="header" data-position="fixed">
+            <h1>xTree</h1>
+        </div>
+        <div class="ui-content" role="main">
+            <label for="programSelector">Select your xmas tree light color:</label>
+            <button class="program-btn" id="btn-setProgram0" value="0" style="color: white; background-color: red">Off</button>
+            <button class="program-btn" id="btn-setProgram1" value="1" style="color: white; background-color: navy">Ocean</button>
+            <button class="program-btn" id="btn-setProgram2" value="2" style="color: white;; background-color: blue">Cloud</button>
+            <button class="program-btn" id="btn-setProgram3" value="3" style="color: white; background-color: #cc0000">Lava</button>
+            <button class="program-btn" id="btn-setProgram4" value="4" style="color: white; background-color: green">Forest</button>
+            <button class="program-btn" id="btn-setProgram5" value="5" style="color: black; background-color: yellow">Party</button>
+            <!--            <hr>
+            <label for="messageContent">Send JSON:</label>
+            <textarea rows="1" cols="16" id="txt-sendJSON">{ a:"100"}</textarea>
+            <button class="JSON-btn" id="btn-sendJSON">SEND</button>            
+-->
+        </div>
+        <div data-role="navbar" class="ui-bar" data-position="fixed">
+            <ul>
+                <li><a href="#home" data-role="button" class="ui-btn-active ui-state-persist">Main</a></li>
+                <!--            <a href="#page2" data-role="button">P2</a> -->
+                <li><a href="#login" data-role="button">Login</a></li>
+                <li><a href="#home" data-role="button" id="check">Devices</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--- *************** 2nd PAGE *************** --->
+    <div data-role="page" id="page2" data-theme="a" data-content-theme="a">
+
+        <div data-role="header" data-position="fixed">
+            <h1>2nd page</h1>
+        </div>
+
+        <div class="ui-content" role="main">
+            <h2>Page 2 content </h2>
+            <hr>
+            <p>Skluidaduppa jamppadaidaa
+                <br> Lorem ipsum</p>
+        </div>
+
+        <div data-role="navbar" class="ui-bar" data-position="fixed">
+            <ul>
+                <li><a href="#home" data-role="button" >Main</a></li>
+                <!--            <a href="#page2" data-role="button">P2</a> -->
+                <li><a href="#login" data-role="button">Login</a></li>
+                <li><a href="#home" data-role="button" id="check">Devices</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <!--- *************** LOGIN PAGE *************** --->
+    <div data-role="page" id="login">
+        <div data-role="header">
+            <h1>Login to your xTree</h1>
+        </div>
+
+        <div role="main" class="ui-content">
+            <h3>Sign In</h3>
+            <label for="myEmail">Email Address</label>
+            <input type="text" name="myEmail" id="myEmail" value="">
+            <label for="myPassword">Password</label>
+            <input type="password" name="myPassword" id="myPassword" value="">
+            <br>
+            <fieldset data-role="controlgroup">
+                <label>
+                    <input type="checkbox" name="myRemember" id="myRemember" checked=""> Remember my login
+                </label>
+            </fieldset>
+            <a href="#myLoginProgress" data-rel="popup" data-role="button" data-role="button" data-transition="pop" data-position-to="window" id="btn-submit">Submit</a>
+
+            <div data-role="popup" id="myLoginProgress" data-dismissible="false" style="max-width:400px;">
+                <div role="main" class="ui-content">
+                    <h3 class="mc-text-danger">Login in progress</h3>
+                    <div class="mc-text-center"><a href="#" data-role="button" data-rel="back">Cancel</a></div>
+
+                </div>
+            </div>
+
+            <div data-role="popup" id="myInvalidCredentials" data-dismissible="false" style="max-width:400px;">
+                <div role="main" class="ui-content">
+                    <h3 class="mc-text-danger">Login Failed</h3>
+                    <p>Please check your email and password</p>
+                    <div class="mc-text-center"><a href="#" data-role="button" data-rel="back">OK</a></div>
+                </div>
+            </div>
+        </div>
+        <div data-role="navbar" class="ui-bar" data-position="fixed">
+            <ul>
+                <li><a href="#home" data-role="button" >Main</a></li>
+                <!--            <a href="#page2" data-role="button">P2</a> -->
+                <li><a href="#login" data-role="button">Login</a></li>
+                <li><a href="#home" data-role="button" id="check">Devices</a></li>
+            </ul>
+        </div>
+        <!-- /content -->
+    </div>
+    <!-- /page -->
+
+    <!--- *************** Device selector PAGE *************** --->
+    <div data-role="page" id="select">
+        <div data-role="header">
+            <h1>Select your device</h1>
+        </div>
+        <div class="ui-content" role="main">
+            <h2>Iot devices available</h2>
+            <div data-role="content">
+                <ul data-role="listview" id="myDeviceList">
+                </ul>
+            </div>
+        </div>
+        <div data-role="popup" id="deviceSelectedPopup" data-transition="fade" class="ui-content">
+            <b id="deviceSelectedName">empty</b> selected.
+        </div>
+        <div data-role="navbar" class="ui-bar" data-position="fixed">
+            <ul>
+                <li><a href="#home" data-role="button" >Main</a></li>
+                <!--            <a href="#page2" data-role="button">P2</a> -->
+                <li><a href="#login" data-role="button">Login</a></li>
+                <li><a href="#home" data-role="button" id="check">Devices</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!--- *************** Load scripts *************** --->
+
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+</body>
+
+</html>
