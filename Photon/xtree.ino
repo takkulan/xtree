@@ -1,8 +1,12 @@
-// This #include statement was automatically added by the Particle IDE.
-#include "FastLED/FastLED.h"
+/* xtree - xmas tree light 
+	- slow blinks for random dots
+	- remote control for color palette
+			(24.12.2015 takku)
+				*/
+
 
 // This #include statement was automatically added by the Particle IDE.
-#include "JSMNSpark/JSMNSpark.h"
+#include "FastLED/FastLED.h"
 
 FASTLED_USING_NAMESPACE;
 #define DATA_PIN A5   // FOR BREADBORD STRIP RUNNING WITH APA102C
